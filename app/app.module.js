@@ -1,4 +1,4 @@
-angular.module('app', [
-    'ui.router',
-    'oc.lazyLoad'
+angular.module("app", [
+    "ui.router",
+    "oc.lazyLoad"
 ]);
