@@ -1,6 +1,9 @@
 {
+    "A000": "Home",
     "A001": "Dashboard",
     "A002": "Navigation",
     "A003": "Dashboard",
-    "A004": "Table"
+    "A004": "Table",
+    "A005": "Friendly Reminder: Wrong Url",
+    "A006": "Back"
 }

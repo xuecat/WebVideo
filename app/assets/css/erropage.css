@@ -1,0 +1,99 @@
+.errpage .bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/assets/img/fofbg1.jpg');
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.errpage .container {
+    width: 730px;
+    height: 300px;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    z-index: 100;
+}
+
+.errpage .info {
+    width: 555px;
+    height: 180px;
+    position: relative;
+    top: 10px;
+    left: 120px;
+}
+
+.errpage .operation {
+    width: 727px;
+    height: 95px;
+    position: relative;
+    top: 20px;
+    left: 10px;
+    background-image: url('/assets/img/fofbg3.png');
+    background-repeat: no-repeat;
+    font-size: 18px;
+    color: #fff;
+    font-family: '黑体';
+}
+
+.errpage .up {
+    width: 727px;
+    height: 30px;
+    position: relative;
+    top: 15px;
+    line-height: 30px;
+}
+
+.errpage .down {
+    width: 727px;
+    height: 30px;
+    position: relative;
+    top: 20px;
+    line-height: 30px;
+}
+
+.errpage .goback {
+    height: 30px;
+    position: relative;
+    left: 190px;
+    background: url('/assets/img/fofbg4.png');
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    padding: 0 10px 10px 10px;
+}
+
+.errpage .gobacktext {
+    position: relative;
+    left: 190px;
+    top: 0px;
+    cursor: pointer;
+}
+
+.errpage .index {
+    height: 30px;
+    position: relative;
+    left: 250px;
+    background: url('/assets/img/fofbg4.png');
+    background-repeat: no-repeat;
+    background-position: -20px 0px;
+    padding: 0 10px 10px 10px;
+}
+
+.errpage .indextext {
+    position: relative;
+    left: 250px;
+    top: 0px;
+    cursor: pointer;
+}
+
+.errpage .tips {
+    position: relative;
+    left: 180px;
+    height: 30px;
+    font-size: 15px;
+}

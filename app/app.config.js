@@ -8,5 +8,5 @@ angular.module('app')
             suffix: '.json'
         },]
     });
-    $translateProvider.preferredLanguage('cn');
+    $translateProvider.preferredLanguage('en');
 }]);
