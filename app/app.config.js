@@ -1,10 +1,18 @@
-angular.module('app').config([
+angular.module('app')
+.config([
     '$ocLazyLoadProvider', function($ocLazyLoadProvider) {
         $ocLazyLoadProvider.config({
             debug: true,
             modules: [{
+                abstract: true,
                 name: 'mainView',
-                files: [''],
+                files: [
+                    'app-router.js',
+                    'lib/translate/angular-translate.js',
+                    'lib/translate/angular-translate-storage-local.js',
+                    'lib/translate/angular-translate-storage-cookie.js',
+                    'lib/translate/angular-translate-loader-static-files.js',
+                    ],
             }, {
                 name: 'errorView',
                 files: [''],
@@ -16,7 +24,12 @@ angular.module('app').config([
     '$stateProvider', function($stateProvider) {
         $stateProvider.state('home', {
             url: '/',
-            templateUrl: 'modules/home/index.html'
+            templateUrl: 'modules/home/index.html',
+            resolve: {
+                loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('mainView');
+                }]
+            }
         })
         .state('/error', {
             url: '/error',
@@ -30,8 +43,8 @@ angular.module('app').config([
         });
     }
 ])
-.config(['$translateProvider', function($translateProvider) { //依赖js没写，明天加
-    $translateProvider.useSanitizeValueStrategy('escapeParameters');
+.config(['$translateProvider', function($translateProvider) {
+    $translateProvider.useSanitizeValueStrategy('escapeParameters');//设置安全参数，防止代码插入
     $translateProvider.useCookieStorage();
     $translateProvider.useStaticFilesLoader({
         files: [{
@@ -40,5 +53,4 @@ angular.module('app').config([
         },]
     });
     $translateProvider.preferredLanguage('cn');
-
 }]);
