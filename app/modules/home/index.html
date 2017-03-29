@@ -2,11 +2,53 @@
 
     <!--SideBar-->
     <div id="sidebar-wrapper">
-        <u class="sidebar">
+        <ul class="sidebar">
             <li class="sidebar-main">
-                <a ng-click=""></a>
+                <a ng-click="ToggleSidebar()">
+                    {{"A001" | translate}}
+                    <span class="menu-icon glyphicon glyphicon-transfer"></span>
+                </a>
             </li>
-        </u>
+            <li class="sidebar-title"><span>{{"A002" | translate}}</span></li>
+            <li class="sidebar-list">
+                <a href="#/dashboard">{{"A003" | translate}} <span class="menu-icon fa fa-tachometer"></span></a>
+            </li>
+            <li class="sidebar-list">
+                <a href="#/tables">{{"A004" | translate}} <span class="menu-icon fa fa-table"></span></a>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <div class="col-xs-4">
+                <a href="https://xuecat.github.io" target="_blank"></a>
+            </div>
+            <div class="col-xs-4">
+                <a href="#">Nothing</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="content-wrapper">
+        <div class="page-content">
+            
+            <!--Header Bar-->
+            <div class="row header">
+                <div class="col-xs-12">
+                    <div class="user pull-right"></div> <!--用户信息，先隐藏-->
+                    <div class="meta">
+                        <div class="page">
+                            {{linkPage}}
+                        </div>
+                        <div class="breadcrumb-links">
+                            {{linkUrl}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ui-view="content"></div>
+            
+        </div>
     </div>
 
 </div>
