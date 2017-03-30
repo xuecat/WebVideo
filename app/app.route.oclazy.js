@@ -14,13 +14,16 @@ angular.module('app')
             }, {
                 name: 'errorView',
                 files: [
-                    'error/errorpage.js',
                     'assets/css/erropage.css',
+                    'error/errorpage.js',
                     ],
             }, {
                 name: 'dashboard',
                 files: [
-                    'dashboard/dashboard.js'
+                    'assets/css/widget.css',
+                    'modules/directives/widget.js',
+                    'modules/directives/widget-body.js',
+                    'dashboard/dashboard.js',
                 ],
             }, {
                 name: 'tables',
@@ -42,7 +45,7 @@ angular.module('app')
             controller: 'mainController',
             resolve: {
                 loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load('errorView');
+                    return $ocLazyLoad.load('mainView');
                 }]
             },
             data: {
