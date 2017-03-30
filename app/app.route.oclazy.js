@@ -28,7 +28,6 @@ angular.module('app')
             }, {
                 name: 'tables',
                 files: [
-                    'tables/tables.js'
                 ],
             }]
         });
