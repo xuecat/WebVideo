@@ -1,10 +1,12 @@
+'user strict';
+
 angular.module('app')
-.controller('mainController', ['$scope', '$state',
- function($scope, $state) {
-     $scope.linkPage = $state.current.data.linkTitle;
+.controller('mainController', ['$scope', '$state','$translate',
+ function($scope, $state, $translate) {
+     $scope.linkPage = $translate.instant($state.current.data.linkTitle);
      $scope.linkUrl = $state.current.data.linkUrl;
 
-     $scope.toggle = false;
+     $scope.toggle = true;
 
      $scope.ToggleSidebar = function() {
          $scope.toggle = !$scope.toggle;

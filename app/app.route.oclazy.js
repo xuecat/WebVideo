@@ -1,3 +1,5 @@
+'user strict';
+
 angular.module('app')
 .config([
     '$ocLazyLoadProvider', function($ocLazyLoadProvider) {
@@ -6,10 +8,9 @@ angular.module('app')
             modules: [{
                 name: 'mainView',
                 files: [
-                    'lib/translate/angular-translate.js',
-                    'lib/translate/angular-translate-storage-local.js',
-                    'lib/translate/angular-translate-storage-cookie.js',
-                    'lib/translate/angular-translate-loader-static-files.js',
+                    'assets/css/rdash.css',
+                    'assets/css/font-awesome.css',
+                    'modules/home/home.js'
                     ],
             }, {
                 name: 'errorView',
@@ -35,7 +36,8 @@ angular.module('app')
 ])
 .config([
     '$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/error');
+        $urlRouterProvider.when('', '/');
+        $urlRouterProvider.otherwise('/');
 
         $stateProvider
         .state('home', {
@@ -82,7 +84,7 @@ angular.module('app')
         })
         .state('/error', {
             url: '/error',
-            templateUrl: 'modules/error/errorpage.html',
+            templateUrl: 'error/errorpage.html',
             controller: 'errorController',
             resolve: {
                 loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {

@@ -2,18 +2,30 @@
 <html lang="en" ng-app="app">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Video</title>
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
 </head>
 
 <body>
-    <div ui-view style="height:100%;"></div>
+    <div ui-view></div>
+
+    <script src="lib/jquery/jquery.js"></script>
 
     <script src="lib/angular/angular.js"></script>
     <script src="lib/oclazyload/oclazyload.js"></script>
     <script src="lib/ui-router/angular-ui-router.js"></script>
+
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
     <script src="lib/ui-bootstrap/ui-bootstrap-tpls.js"></script>
 
+    <script src="lib/translate/angular-translate.js"></script>
+    <script src="lib/translate/angular-translate-storage-local.js"></script>
+    <script src="lib/translate/angular-translate-storage-cookie.js"></script>
+    <script src="lib/translate/angular-translate-loader-static-files.js"></script>
+
+    <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
+    <script src="app.route.oclazy.js"></script>
 </body>
 </html>

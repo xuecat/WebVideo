@@ -1,6 +1,7 @@
 /**
  * Widget Body Directive
  */
+'user strict';
 
 angular
     .module('RDash')

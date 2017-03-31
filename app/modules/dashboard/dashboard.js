@@ -1,3 +1,5 @@
+'user strict';
+
 angular
     .module('app')
     .controller('dashboardController', ['$scope', AlertsCtrl]);
