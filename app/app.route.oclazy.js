@@ -21,7 +21,7 @@ angular.module('app')
             }, {
                 name: 'dashboard',
                 files: [
-                    'assets/css/widget.css',
+                    'assets/css/rdash.css',
                     'modules/directives/widget.js',
                     'modules/directives/widget-body.js',
                     'dashboard/dashboard.js',
@@ -29,6 +29,12 @@ angular.module('app')
             }, {
                 name: 'tables',
                 files: [
+                    'assets/css/rdash.css',
+                    'modules/directives/widget.js',
+                    'modules/directives/widget-body.js',
+                    'modules/directives/widget-header.js',
+                    'modules/directives/widget-footer.js',
+                    'tables/tables.js',
                 ],
             }]
         });
@@ -36,8 +42,8 @@ angular.module('app')
 ])
 .config([
     '$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.when('', '/');
-        $urlRouterProvider.otherwise('/');
+        // $urlRouterProvider.otherwise('/dashboard');
+        // $urlRouterProvider.when('', '/dashboard');
 
         $stateProvider
         .state('home', {
