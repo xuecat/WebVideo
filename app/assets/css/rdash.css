@@ -275,6 +275,7 @@ ul.sidebar .sidebar-list a:hover,
   /* Sidebar header and footer color */
   background: #2d3e63;
 }
+
 ul.sidebar {
   position: absolute;
   top: 0;
@@ -331,6 +332,13 @@ ul.sidebar .sidebar-list a:hover {
   border-left: 3px solid #e99d1a;
   text-indent: 22px;
 }
+ul.sidebar .sidebar-list a:focus,a:active {
+  background: #b2bfdc;
+  color: #fff;
+  border-left: 3px solid #e99d1a;
+  text-indent: 22px;
+}
+
 ul.sidebar .sidebar-list a:hover .menu-icon {
   text-indent: 25px;
 }
