@@ -11,10 +11,10 @@
         </li>
         <li class="sidebar-title"><span>{{"A002" | translate}}</span></li>
         <li class="sidebar-list">
-          <a href="#">{{"A003" | translate}} <span class="menu-icon fa fa-tachometer"></span></a>
+          <a ui-sref=".dashboard">{{"A003" | translate}} <span class="menu-icon fa fa-tachometer"></span></a>
         </li>
         <li class="sidebar-list">
-          <a href="#/tables">{{"A004" | translate}} <span class="menu-icon fa fa-table"></span></a>
+          <a ui-sref=".tables">{{"A004" | translate}} <span class="menu-icon fa fa-table"></span></a>
         </li>
       </ul>
       <div class="sidebar-footer">
@@ -42,10 +42,10 @@
             </div>
             <div class="meta">
               <div class="page">
-                {{linkPage}}
+                {{linkPage.linkTitle | translate}}
               </div>
               <div class="breadcrumb-links">
-                {{linkUrl}}
+                {{linkPage.linkUrl}}
               </div>
             </div>
           </div>

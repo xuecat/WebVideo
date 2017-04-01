@@ -3,7 +3,7 @@
  */
 
 angular
-    .module('RDash')
+    .module('app')
     .directive('rdWidgetHeader', rdWidgetTitle);
 
 function rdWidgetTitle() {

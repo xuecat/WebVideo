@@ -2,9 +2,9 @@
 
 angular
     .module('app')
-    .controller('dashboardController', ['$scope', AlertsCtrl]);
+    .controller('dashboardController', ['$scope','$translate', '$state', ScopeController]);
 
-function AlertsCtrl($scope) {
+function ScopeController($scope, $translate, $state) {
     $scope.alerts = [{
         type: 'success',
         msg: 'Thanks for visiting! Feel free to create pull requests to improve the dashboard!'

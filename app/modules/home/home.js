@@ -3,8 +3,15 @@
 angular.module('app')
 .controller('mainController', ['$scope', '$state','$translate',
  function($scope, $state, $translate) {
-     $scope.linkPage = $translate.instant($state.current.data.linkTitle);
-     $scope.linkUrl = $state.current.data.linkUrl;
+     $scope.linkPage = $state.current.data;
+     $state.transitionTo('home.dashboard');
+
+     $scope.$on('$stateChangeSuccess', 
+     function(event, toState, toParams, fromState, fromParams) { 
+         if (toState) {
+            $scope.linkPage = toState.data;
+         }
+     });
 
      $scope.toggle = true;
 

@@ -1,6 +1,6 @@
 angular.module('app')
 .controller('errorController', ['$scope', '$state', '$location',
-    function($scope, $location, $state) {
+    function($scope, $state, $location) {
         $scope.goback = function() {
             window.history.go(-1);
         }

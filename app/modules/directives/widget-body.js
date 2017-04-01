@@ -4,7 +4,7 @@
 'user strict';
 
 angular
-    .module('RDash')
+    .module('app')
     .directive('rdWidgetBody', rdWidgetBody);
 
 function rdWidgetBody() {

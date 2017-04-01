@@ -24,7 +24,7 @@ angular.module('app')
                     'assets/css/rdash.css',
                     'modules/directives/widget.js',
                     'modules/directives/widget-body.js',
-                    'dashboard/dashboard.js',
+                    'modules/dashboard/dashboard.js',
                 ],
             }, {
                 name: 'tables',
@@ -34,20 +34,23 @@ angular.module('app')
                     'modules/directives/widget-body.js',
                     'modules/directives/widget-header.js',
                     'modules/directives/widget-footer.js',
-                    'tables/tables.js',
+                    'modules/tables/tables.js',
                 ],
             }]
         });
     }
 ])
 .config([
-    '$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
-        // $urlRouterProvider.otherwise('/dashboard');
-        // $urlRouterProvider.when('', '/dashboard');
+    '$stateProvider', '$urlRouterProvider',
+    function($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/error');
+        $urlRouterProvider.when('/', '/home');
+        $urlRouterProvider.when('', '/home');
 
         $stateProvider
         .state('home', {
-            url: '/',
+            //abstract: true,
+            url: '/home',
             templateUrl: 'modules/home/home.html',
             controller: 'mainController',
             resolve: {
