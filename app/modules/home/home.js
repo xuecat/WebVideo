@@ -7,7 +7,7 @@ angular.module('app')
      $state.transitionTo('home.dashboard');
 
      $scope.$on('$stateChangeSuccess', 
-     function(event, toState, toParams, fromState, fromParams) { 
+     function(event, toState, toParams, fromState, fromParams) {
          if (toState) {
             $scope.linkPage = toState.data;
          }
