@@ -13,6 +13,16 @@
     "browser-sync": "^2.18.8",
     "eslint-plugin-angular": "^2.0.0",
     "gulp": "^3.9.1",
-    "gulp-less": "^3.3.0"
+    "gulp-clean": "^0.3.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-jsonminify": "^1.0.0",
+    "gulp-less": "^3.3.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-uglify": "^2.1.2",
+    "gulp-watch": "^4.3.11",
+    "run-sequence": "^1.2.2"
   }
 }
