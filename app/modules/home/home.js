@@ -1,8 +1,8 @@
 'user strict';
 
 angular.module('app')
-.controller('mainController', ['$scope', '$state','$translate',
- function($scope, $state, $translate) {
+.controller('mainController', ['$scope', '$state','$translate', 'appToggleData', 'appAllConst',
+ function($scope, $state, $translate, appToggleData,appAllConst) {
      $scope.linkPage = $state.current.data;
      $state.transitionTo('home.dashboard');
 
@@ -11,6 +11,12 @@ angular.module('app')
          if (toState) {
             $scope.linkPage = toState.data;
          }
+
+         if (toState.name == 'home.dashboard') {
+            appToggleData.toggleChildView = appAllConst.LEFT_VIEW;
+        } else if (toState.name == 'home.tables') {
+            appToggleData.toggleChildView = appAllConst.RIGHT_VIEW;
+        }
      });
 
      $scope.toggle = true;
