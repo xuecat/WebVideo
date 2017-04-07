@@ -9,7 +9,8 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     watch = require('gulp-watch'),
     replace = require('gulp-replace'),
-    runSequence = require('run-sequence');
+    runSequence = require('run-sequence'),
+    browserSync = require('browser-sync');
 
 var htmlSrc = ['app/**/*.html', '!app/lib/**/*.html', '!app/lib/*.html'];
 var jsSrc = ['app/**/*.js', '!app/lib/**/*.js', '!app/assets/**/*.js'];
@@ -21,9 +22,24 @@ var jsonSrc = ['app/translate/*.json', 'app/translate/**/*.json'];
 
 var libSrc = ['app/lib/**/*'];
 
+var indexSrc = 'app/index.html';
+
 var buildPath = 'dist';
 
-gulp.task('createIndex', function() {});
+gulp.task('createIndex', function() {
+    gulp.src('app/app.module.js')
+    .pipe(rename('app/app.module.min.js'))
+    .pipe(gulp.dest(buildPath));
+    gulp.src('app/app.config.js')
+    .pipe(rename('app/app.config.min.js'))
+    .pipe(gulp.dest(buildPath));
+    gulp.src('app/app.route.oclazy.js')
+    .pipe(rename('app/app.route.oclazy.min.js'))
+    .pipe(gulp.dest(buildPath));
+    return gulp.src(indexSrc)
+    .pipe(replace(/\.js/g, '.min.js'))
+    .pipe(gulp.dest(buildPath));
+});
 
 gulp.task('compressHTML', function() {
     return gulp.src(htmlSrc)
@@ -68,8 +84,12 @@ gulp.task('clean', function() {
     .pipe(clean());
 });
 
-gulp.task('default', function() {
+gulp.task('default', ['clean'], function() {
     runSequence('createIndex', 
     ['compressHTML', 'compressJS', 'compressCSS', 'compressJSON'],
     ['copyLib', 'copyImg']);
+});
+
+gulp.task('watch', function() {
+    gulp.watch();
 });
