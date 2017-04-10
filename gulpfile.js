@@ -10,13 +10,16 @@ var gulp = require('gulp'),
     watch = require('gulp-watch'),
     replace = require('gulp-replace'),
     runSequence = require('run-sequence'),
-    browserSync = require('browser-sync');
+    browserSync = require('browser-sync'),
+    filter = require('gulp-filter');
 
-var htmlSrc = ['app/**/*.html', '!app/lib/**/*.html', '!app/lib/*.html'];
+var htmlSrc = ['app/**/*.html', '!app/index.html', '!app/lib/**/*.html', '!app/lib/*.html'];
 var jsSrc = ['app/**/*.js', '!app/lib/**/*.js', '!app/assets/**/*.js'];
 var cssSrc = ['app/assets/**/*.css', '!app/lib/**/*.css'];
 
 var imgSrc = ['app/assets/img/*', 'app/assets/img/**/*'];
+
+var fontSrc = ['app/assets/fonts/**/*'];
 
 var jsonSrc = ['app/translate/*.json', 'app/translate/**/*.json'];
 
@@ -24,59 +27,68 @@ var libSrc = ['app/lib/**/*'];
 
 var indexSrc = 'app/index.html';
 
-var buildPath = 'dist';
+var buildPath = 'dist/';
 
 gulp.task('createIndex', function() {
-    gulp.src('app/app.module.js')
-    .pipe(rename('app/app.module.min.js'))
-    .pipe(gulp.dest(buildPath));
-    gulp.src('app/app.config.js')
-    .pipe(rename('app/app.config.min.js'))
-    .pipe(gulp.dest(buildPath));
-    gulp.src('app/app.route.oclazy.js')
-    .pipe(rename('app/app.route.oclazy.min.js'))
-    .pipe(gulp.dest(buildPath));
     return gulp.src(indexSrc)
     .pipe(replace(/\.js/g, '.min.js'))
-    .pipe(gulp.dest(buildPath));
+    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulp.dest(buildPath))
+    .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('compressHTML', function() {
     return gulp.src(htmlSrc)
     .pipe(htmlmin({collapseWhitespace: true}))
-    .pipe(gulp.dest(buildPath));
+    .pipe(gulp.dest(buildPath))
+    .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('compressJS', function() {
+    var filterIndex = filter(['**/app.config.js', '**/app.module.js', '**/app.route.oclazy.js'], {restore: true});
     return gulp.src(jsSrc)
     .on('error', function(err) {//语法检查，打印错误
         console.log('Error: ', err.message);
     })
+    .pipe(filterIndex)
+    .pipe(rename({suffix: '.min'}))
+    .pipe(filterIndex.restore)
     .pipe(uglify())//压缩
-    .pipe(gulp.dest(buildPath));
+    .pipe(gulp.dest(buildPath))
+    .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('compressCSS', function() {
     return gulp.src(cssSrc)
     //.pipe(concat('index.min.css')) 为了使用oclazyload不整合
     .pipe(minifycss())
-    .pipe(gulp.dest(buildPath + '/assets'));
+    .pipe(gulp.dest(buildPath + 'assets'))
+    .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('compressJSON', function () {
     return gulp.src(jsonSrc)
         .pipe(jsonminify())
-        .pipe(gulp.dest(buildPath + 'translate'));
+        .pipe(gulp.dest(buildPath + 'translate'))
+        .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('copyImg', function() {
     return gulp.src(imgSrc)
-    .pipe(gulp.dest(buildPath + '/assets/img'));
+    .pipe(gulp.dest(buildPath + 'assets/img'))
+    .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('copyLib', function() {
     return gulp.src(libSrc)
-    .pipe(gulp.dest(buildPath + 'lib'));
+    .pipe(gulp.dest(buildPath + 'lib'))
+    .pipe(browserSync.reload({stream: true}));
+});
+
+gulp.task('copyFont', function() {
+    return gulp.src(fontSrc)
+    .pipe(gulp.dest(buildPath + 'assets/fonts'))
+    .pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task('clean', function() {
@@ -84,12 +96,26 @@ gulp.task('clean', function() {
     .pipe(clean());
 });
 
-gulp.task('default', ['clean'], function() {
+gulp.task('startCreate', ['clean'], function() {
     runSequence('createIndex', 
     ['compressHTML', 'compressJS', 'compressCSS', 'compressJSON'],
-    ['copyLib', 'copyImg']);
+    ['copyLib', 'copyImg', 'copyFont']);
 });
 
-gulp.task('watch', function() {
-    gulp.watch();
+gulp.task('browserSync', function() {
+    gulp.start('startCreate');
+
+    browserSync.init({
+        server: {
+            baseDir: buildPath
+        }
+    });
+
+    gulp.watch(indexSrc, ['createIndex']);
+    gulp.watch(htmlSrc, ['compressHTML']);
+    gulp.watch(jsSrc, ['compressJS']);
+    gulp.watch(cssSrc, ['compressCSS']);
+    gulp.watch(jsonSrc, ['compressJSON']);
 });
+
+gulp.task('default', ['browserSync']);
