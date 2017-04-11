@@ -36,6 +36,11 @@ angular.module('app')
                     'modules/directives/widget-footer.js',
                     'modules/tables/tables.js',
                 ],
+            }, {
+                name: 'video',
+                files: [
+                    'modules/video/video.js',
+                ],
             }]
         });
     }
@@ -89,6 +94,20 @@ angular.module('app')
             data: {
                 linkTitle: 'A004',
                 linkUrl: '/home/tables',
+            }
+        })
+        .state('home.video', {
+            url: '/video',
+            templateUrl: 'modules/video/video.html',
+            controller: 'videoController',
+            resolve: {
+                loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load('video');
+                }]
+            },
+            data: {
+                linkTitle: 'A007',
+                linkUrl: '/home/video',
             }
         })
         .state('/error', {
