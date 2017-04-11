@@ -26,23 +26,29 @@ var jsonSrc = ['app/translate/*.json', 'app/translate/**/*.json'];
 var libSrc = ['app/lib/**/*'];
 
 var indexSrc = 'app/index.html';
+var faviconSrc = 'app/favicon.ico';
 
 var debugPath = 'app/';
 var buildPath = 'dist/';
 
-gulp.task('createIndex', function() {
+gulp.task('moveFavicon', function() {
+    return gulp.src(faviconSrc)
+    .pipe(gulp.dest(buildPath));
+});
+
+gulp.task('createIndex', ['moveFavicon'], function() {
     return gulp.src(indexSrc)
     .pipe(replace(/\.js/g, '.min.js'))
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(buildPath))
-    .pipe(browserSync.reload({stream: true}));
+    .pipe(browserSync.stream());
 });
 
 gulp.task('compressHTML', function() {
     return gulp.src(htmlSrc)
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(buildPath))
-    .pipe(browserSync.reload({stream: true}));
+    .pipe(browserSync.stream());
 });
 
 gulp.task('compressJS', function() {
@@ -56,7 +62,7 @@ gulp.task('compressJS', function() {
     .pipe(filterIndex.restore)
     .pipe(uglify())//压缩
     .pipe(gulp.dest(buildPath))
-    .pipe(browserSync.reload({stream: true}));
+    .pipe(browserSync.stream());
 });
 
 gulp.task('compressCSS', function() {
@@ -64,32 +70,32 @@ gulp.task('compressCSS', function() {
     //.pipe(concat('index.min.css')) 为了使用oclazyload不整合
     .pipe(minifycss())
     .pipe(gulp.dest(buildPath + 'assets'))
-    .pipe(browserSync.reload({stream: true}));
+    .pipe(browserSync.stream());
 });
 
 gulp.task('compressJSON', function () {
     return gulp.src(jsonSrc)
         .pipe(jsonminify())
         .pipe(gulp.dest(buildPath + 'translate'))
-        .pipe(browserSync.reload({stream: true}));
+        .pipe(browserSync.stream());
 });
 
 gulp.task('copyImg', function() {
     return gulp.src(imgSrc)
     .pipe(gulp.dest(buildPath + 'assets/img'))
-    .pipe(browserSync.reload({stream: true}));
+    .pipe(browserSync.stream());
 });
 
 gulp.task('copyLib', function() {
     return gulp.src(libSrc)
     .pipe(gulp.dest(buildPath + 'lib'))
-    .pipe(browserSync.reload({stream: true}));
+    .pipe(browserSync.stream());
 });
 
 gulp.task('copyFont', function() {
     return gulp.src(fontSrc)
     .pipe(gulp.dest(buildPath + 'assets/fonts'))
-    .pipe(browserSync.reload({stream: true}));
+    .pipe(browserSync.stream());
 });
 
 gulp.task('clean', function() {
@@ -108,7 +114,7 @@ gulp.task('browserSync', function() {
 
     browserSync.init({
         server: {
-            baseDir: buildPath
+            baseDir: debugPath
         }
     });
 
