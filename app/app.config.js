@@ -11,4 +11,4 @@ angular.module('app')
     $translateProvider.preferredLanguage('en');
 }])
 .constant('appAllConst', {'LEFT_VIEW': 0, 'RIGHT_VIEW': 1,})
-.value('appToggleData', {toggleChildView: 0});
+.value('appToggleData', {toggleTablesView: '', toggleDashboardView: ''});

@@ -13,9 +13,11 @@ angular.module('app')
          }
 
          if (toState.name == 'home.dashboard') {
-            appToggleData.toggleChildView = appAllConst.LEFT_VIEW;
+            appToggleData.toggleTablesView = 'anim-slide-left';
+            appToggleData.toggleDashboardView = 'anim-slide-left';
         } else if (toState.name == 'home.tables') {
-            appToggleData.toggleChildView = appAllConst.RIGHT_VIEW;
+            appToggleData.toggleTablesView = 'anim-slide-right';
+            appToggleData.toggleDashboardView = 'anim-slide-right';
         }
      });
 

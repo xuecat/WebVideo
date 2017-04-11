@@ -27,6 +27,7 @@ var libSrc = ['app/lib/**/*'];
 
 var indexSrc = 'app/index.html';
 
+var debugPath = 'app/';
 var buildPath = 'dist/';
 
 gulp.task('createIndex', function() {
