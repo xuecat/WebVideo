@@ -97,7 +97,7 @@ angular.module('app')
             }
         })
         .state('home.video', {
-            url: '/video',
+            url: '/video/:type/video?param1&param2',//格式，图片，视频
             templateUrl: 'modules/video/video.html',
             controller: 'videoController',
             resolve: {
