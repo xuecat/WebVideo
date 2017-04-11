@@ -4,6 +4,7 @@ angular.module('app')
 .controller('mainController', ['$scope', '$state','$translate', 'appToggleData', 'appAllConst',
  function($scope, $state, $translate, appToggleData,appAllConst) {
      $scope.linkPage = $state.current.data;
+     
      $state.transitionTo('home.dashboard');
 
      $scope.$on('$stateChangeSuccess', 

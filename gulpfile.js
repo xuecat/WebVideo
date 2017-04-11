@@ -1,3 +1,5 @@
+'user strict';
+
 var gulp = require('gulp'),
     less = require('gulp-less'),
     uglify = require('gulp-uglify'),
@@ -41,14 +43,14 @@ gulp.task('createIndex', ['moveFavicon'], function() {
     .pipe(replace(/\.js/g, '.min.js'))
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(buildPath))
-    .pipe(browserSync.stream());
+    .pipe(browserSync.reload({stream:true}));
 });
 
 gulp.task('compressHTML', function() {
     return gulp.src(htmlSrc)
     .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulp.dest(buildPath))
-    .pipe(browserSync.stream());
+    .pipe(browserSync.reload({stream:true}));
 });
 
 gulp.task('compressJS', function() {
@@ -62,7 +64,7 @@ gulp.task('compressJS', function() {
     .pipe(filterIndex.restore)
     .pipe(uglify())//压缩
     .pipe(gulp.dest(buildPath))
-    .pipe(browserSync.stream());
+    .pipe(browserSync.reload({stream:true}));
 });
 
 gulp.task('compressCSS', function() {
@@ -70,32 +72,32 @@ gulp.task('compressCSS', function() {
     //.pipe(concat('index.min.css')) 为了使用oclazyload不整合
     .pipe(minifycss())
     .pipe(gulp.dest(buildPath + 'assets'))
-    .pipe(browserSync.stream());
+    .pipe(browserSync.reload({stream:true}));
 });
 
 gulp.task('compressJSON', function () {
     return gulp.src(jsonSrc)
         .pipe(jsonminify())
         .pipe(gulp.dest(buildPath + 'translate'))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.reload({stream:true}));
 });
 
 gulp.task('copyImg', function() {
     return gulp.src(imgSrc)
     .pipe(gulp.dest(buildPath + 'assets/img'))
-    .pipe(browserSync.stream());
+    .pipe(browserSync.reload({stream:true}));
 });
 
 gulp.task('copyLib', function() {
     return gulp.src(libSrc)
     .pipe(gulp.dest(buildPath + 'lib'))
-    .pipe(browserSync.stream());
+    .pipe(browserSync.reload({stream:true}));
 });
 
 gulp.task('copyFont', function() {
     return gulp.src(fontSrc)
     .pipe(gulp.dest(buildPath + 'assets/fonts'))
-    .pipe(browserSync.stream());
+    .pipe(browserSync.reload({stream:true}));
 });
 
 gulp.task('clean', function() {
@@ -114,14 +116,14 @@ gulp.task('browserSync', function() {
 
     browserSync.init({
         server: {
-            baseDir: debugPath
+            baseDir: buildPath
         }
     });
 
-    gulp.watch(indexSrc, ['createIndex']);
-    gulp.watch(htmlSrc, ['compressHTML']);
-    gulp.watch(jsSrc, ['compressJS']);
-    gulp.watch(cssSrc, ['compressCSS']);
+    gulp.watch(indexSrc, ['createIndex']).on("change", browserSync.reload);
+    gulp.watch(htmlSrc, ['compressHTML']).on("change", browserSync.reload);
+    gulp.watch(jsSrc, ['compressJS']).on("change", browserSync.reload);
+    gulp.watch(cssSrc, ['compressCSS']).on("change", browserSync.reload);
     gulp.watch(jsonSrc, ['compressJSON']);
 });
 
