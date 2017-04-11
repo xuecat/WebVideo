@@ -16,15 +16,17 @@ angular.module('app')
 
     //  $scope.$on('$viewContentLoaded', function(event, a, b, c, d) {
     //  });
-    $scope.switchView = function (nview) {
-        if (nview == 0) {
-            appToggleData.toggleTablesView = 'anim-slide-left';
-            appToggleData.toggleDashboardView = 'anim-slide-right';
-        } else if (nview == 1) {
-            appToggleData.toggleTablesView = 'anim-slide-left';
-            appToggleData.toggleDashboardView = 'anim-slide-right';
-        }
-    }
+    // $scope.$on('$stateChangeStart', 
+    // function(event, toState, toParams, fromState, fromParams) {
+    //     if (fromState.name && fromState.name != "home" && toState.name == "home.dashboard") {
+    //         appToggleData.toggleDashboardView = 'anim-slide-right';
+    //         appToggleData.toggleTablesView = 'anim-slide-left';
+    //         appToggleData.toggleVideoView = 'anim-slide-left';
+    //     } else if (fromState.name == "home.dashboard") {
+    //         appToggleData.toggleTablesView = 'anim-slide-left';
+    //         appToggleData.toggleDashboardView = 'anim-slide-right';
+    //     }
+    // });
 
      $scope.toggle = true;
 

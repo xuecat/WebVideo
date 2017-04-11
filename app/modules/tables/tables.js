@@ -6,7 +6,11 @@ angular.module('app')
         $scope.toggleView = appToggleData;
 
         $scope.SelectVideo = function () {
-            $state.go('home.video', {type: '', param1: '', param2: ''});
+            $state.go('home.video', {
+                type: '2', 
+                param1: '22',
+                param2: '44'
+            });
         };
     }
 ]);
