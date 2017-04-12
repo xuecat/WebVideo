@@ -7,9 +7,9 @@ angular.module('app')
 
         $scope.SelectVideo = function () {
             $state.go('home.video', {
-                type: '2', 
-                param1: './../data/gg.mp4',
-                param2: './../data/test.png'
+                type: 1, 
+                param1: './../data/test.png',
+                param2: './../data/test.mp4'
             });
         };
     }

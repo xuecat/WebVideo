@@ -3,22 +3,32 @@
 angular.module('app')
 .controller('videoController', ['$scope', '$state','$translate', 'appToggleData', '$stateParams',
     function ScopeController($scope, $state, $translate, appToggleData, $stateParams) {
-        $scope.toggleView = appToggleData;
-        $scope.postImage = $stateParams.param1;
-        $scope.videoSrc = $stateParams.param2;
+        var myplayer = videojs('v-player');
 
+        $scope.toggleView = appToggleData;
+
+        var videoType = '';
         switch ($stateParams.type) {
-            case 1: {
-                $scope.videoType = 'video/mp4';
+            case '1': {
+                videoType = 'video/mp4';
             } break;
-            case 2: {
-                $scope.videoType = 'video/webm';
+            case '2': {
+                videoType = 'video/webm';
             } break;
-            case 3: {
-                $scope.videoType = 'video/ogg';
+            case '3': {
+                videoType = 'video/ogg';
+            } break;
+            case '4': {
+                videoType = 'video/avi';
             } break;
             default:
                 break;
         }
+
+        myplayer.poster($stateParams.param1);
+        myplayer.src({
+            type: videoType,
+            src: $stateParams.param2,
+        });
     }
 ]);

@@ -116,7 +116,7 @@ gulp.task('browserSync', function() {
 
     browserSync.init({
         server: {
-            baseDir: buildPath
+            baseDir: debugPath
         }
     });
 
