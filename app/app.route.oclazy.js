@@ -39,6 +39,7 @@ angular.module('app')
             }, {
                 name: 'video',
                 files: [
+                    'assets/css/videoskin-js.css',
                     'modules/video/video.js',
                 ],
             }]

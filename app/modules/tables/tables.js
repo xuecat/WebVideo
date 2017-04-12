@@ -8,8 +8,8 @@ angular.module('app')
         $scope.SelectVideo = function () {
             $state.go('home.video', {
                 type: '2', 
-                param1: '22',
-                param2: '44'
+                param1: './../data/gg.mp4',
+                param2: './../data/test.png'
             });
         };
     }

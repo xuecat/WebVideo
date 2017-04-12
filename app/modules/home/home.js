@@ -5,7 +5,7 @@ angular.module('app')
  function($scope, $state, $translate, appToggleData,appAllConst) {
      $scope.linkPage = $state.current.data;
      
-     $state.transitionTo('home.dashboard');
+     $state.transitionTo('home.video');
 
      $scope.$on('$stateChangeSuccess', 
      function(event, toState, toParams, fromState, fromParams) {

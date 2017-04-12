@@ -11,10 +11,10 @@
         </li>
         <li class="sidebar-title"><span>{{"A002" | translate}}</span></li>
         <li class="sidebar-list">
-          <a ng-click="switchView(0)" ui-sref=".dashboard">{{"A003" | translate}} <span class="menu-icon fa fa-tachometer"></span></a>
+          <a ui-sref=".dashboard" ui-sref-active="selectactive">{{"A003" | translate}} <span class="menu-icon fa fa-tachometer"></span></a>
         </li>
         <li class="sidebar-list">
-          <a ng-click="switchView(1)" ui-sref=".tables">{{"A004" | translate}} <span class="menu-icon fa fa-table"></span></a>
+          <a ui-sref=".tables" ui-sref-active="selectactive">{{"A004" | translate}} <span class="menu-icon fa fa-table"></span></a>
         </li>
       </ul>
       <div class="sidebar-footer">

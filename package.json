@@ -25,6 +25,7 @@
     "gulp-uglify": "^2.1.2",
     "gulp-watch": "^4.3.11",
     "run-sequence": "^1.2.2",
-    "video.js": "^5.19.1"
+    "video.js": "^5.19.1",
+    "videojs-youtube": "^2.3.2"
   }
 }

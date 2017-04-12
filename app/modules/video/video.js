@@ -6,6 +6,19 @@ angular.module('app')
         $scope.toggleView = appToggleData;
         $scope.postImage = $stateParams.param1;
         $scope.videoSrc = $stateParams.param2;
-        $scope.videoType = $stateParams.type;
+
+        switch ($stateParams.type) {
+            case 1: {
+                $scope.videoType = 'video/mp4';
+            } break;
+            case 2: {
+                $scope.videoType = 'video/webm';
+            } break;
+            case 3: {
+                $scope.videoType = 'video/ogg';
+            } break;
+            default:
+                break;
+        }
     }
 ]);

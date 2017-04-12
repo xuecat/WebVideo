@@ -1,8 +1,15 @@
-<div class="row">
-    <video id="v-player" style="margin:0 auto;" width="640px" height="267px" class="video-js vjs-default-skin"
-    controls preload="auto" 
-    poster="//vjs.zencdn.net/v/oceans.png"
-    data-setup='{}'>
-        <source src="../data/gg.mp4" type="video/mp4"></source>
+<div class="{{ toggleView.toggleVideoView }}">
+    <video id="v-player" 
+            class="video-js vjs-default-skin vjs-big-play-centered"
+            controls 
+            preload="auto" 
+            poster="./../data/test.png" 
+            data-setup='{ 
+                "example_option":true
+                }'>
+        <source src="./../data/gg.mp4" type="video/mp4"></source>
+        <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video
+        </p>
     </video>
 </div>

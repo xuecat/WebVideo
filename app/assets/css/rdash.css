@@ -332,8 +332,7 @@ ul.sidebar .sidebar-list a:hover {
   border-left: 3px solid #e99d1a;
   text-indent: 22px;
 }
-ul.sidebar .sidebar-list a:focus,a:active {
-  background: #b2bfdc;
+.selectactive, ul.sidebar .sidebar-list a:focus,a:active {
   color: #fff;
   border-left: 3px solid #e99d1a;
   text-indent: 22px;
