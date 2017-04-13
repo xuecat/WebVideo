@@ -60,19 +60,8 @@ angular.module('app')
         .state('home', {
             //abstract: true,
             url: '/home',
-            views: {
-                '': {
-                    templateUrl: 'modules/home/home.html',
-                    controller: 'mainController',
-                },
-                'sidebar@home': {
-                    templateUrl: 'modules/home/sidebartable.html',
-                },
-                'body@home': {
-                    templateUrl: 'modules/dashboard/dashboard.html',
-                    controller: 'dashboardController',
-                }
-            },
+            templateUrl: 'modules/home/home.html',
+            controller: 'mainController',
             resolve: {
                 loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load('mainView');
@@ -83,7 +72,31 @@ angular.module('app')
                 linkUrl: '/home',
             }
         })
-        .state('home.dashboard', {
+        .state('home.list', {
+            url: '/list',
+            views: {
+                'sidebar@home': {
+                    templateUrl: 'modules/home/sidebartable.html',
+                }
+            },
+            data: {
+                linkTitle: 'A008',
+                linkUrl: '/home/list',
+            }
+        })
+        .state('home.filetree', {
+            url: '/filetree',
+            views: {
+                'sidebar@home': {
+                    templateUrl: 'modules/filemanager/sidebartree.html',
+                }
+            },
+            data: {
+                linkTitle: 'A009',
+                linkUrl: '/home/filetree',
+            }
+        })
+        .state('home.list.dashboard', {
             url: '/dashboard',
             views: {
                 'body@home': {
@@ -101,7 +114,7 @@ angular.module('app')
                 linkUrl: '/home/dashboard',
             }
         })
-        .state('home.tables', {
+        .state('home.list.tables', {
             url: '/tables',
             views: {
                 'body@home': {
@@ -119,7 +132,7 @@ angular.module('app')
                 linkUrl: '/home/tables',
             }
         })
-        .state('home.video', {
+        .state('home.list.video', {
             url: '/video/:type/video?param1&param2',//格式，图片，视频
             templateUrl: 'modules/video/video.html',
             controller: 'videoController',
@@ -132,30 +145,6 @@ angular.module('app')
                 linkTitle: 'A007',
                 linkUrl: '/home/video',
             }
-        })
-        .state('home.list', {
-            url: '/list',
-            views: {
-                'sidebar@home': {
-                templateUrl: 'modules/home/sidebartable.html',
-                }
-            },
-            data: {
-                    linkTitle: 'A007',
-                    linkUrl: '/home/list',
-                }
-        })
-        .state('home.filetree', {
-            url: '/filetree',
-            views: {
-                'sidebar@home': {
-                templateUrl: 'modules/filemanager/sidebartree.html',
-                }
-            },
-            data: {
-                    linkTitle: 'A007',
-                    linkUrl: '/home/filetree',
-                }
         })
         .state('/error', {
             url: '/error',
