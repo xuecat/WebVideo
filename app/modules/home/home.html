@@ -9,23 +9,17 @@
             <span class="menu-icon glyphicon glyphicon-transfer"></span>
           </a>
         </li>
-        <li class="sidebar-title"><span>{{"A002" | translate}}</span></li>
-        <li class="sidebar-list">
-          <a ui-sref=".dashboard" ui-sref-active="selectactive">{{"A003" | translate}} <span class="menu-icon fa fa-tachometer"></span></a>
-        </li>
-        <li class="sidebar-list">
-          <a ui-sref=".tables" ui-sref-active="selectactive">{{"A004" | translate}} <span class="menu-icon fa fa-table"></span></a>
-        </li>
+        <div class="anim-in-out anim-fade" data-anim-sync="false" data-anim-speed="400" ui-view="sidebar" ></div>
       </ul>
       <div class="sidebar-footer">
         <div class="col-xs-4">
-          <a href="https://github.com/rdash/rdash-angular" target="_blank">
-            Github
+          <a ui-sref="home.list">
+            List
           </a>
         </div>
         <div class="col-xs-4">
-          <a href="#">
-            Nothing
+          <a ui-sref="home.filetree">
+            Tree
           </a>
         </div>
       </div>
@@ -53,7 +47,7 @@
         <!-- End Header Bar -->
 
         <!-- Main Content -->
-        <div class="anim-in-out anim-fade" data-anim-sync="false" data-anim-speed="400" ui-view ></div>
+        <div class="anim-in-out anim-fade" data-anim-sync="false" data-anim-speed="400" ui-view="body" ></div>
 
       </div><!-- End Page Content -->
     </div><!-- End Content Wrapper -->

@@ -14,10 +14,16 @@ angular.module('app')
          }
      });
 
+     $scope.$on('$stateChangeStart', 
+     function(event, toState, toParams, fromState, fromParams) {
+         //event.preventDefault(); 
+     });
+
     //  $scope.$on('$viewContentLoaded', function(event, a, b, c, d) {
     //  });
     // $scope.$on('$stateChangeStart', 
     // function(event, toState, toParams, fromState, fromParams) {
+        //event.preventDefault(); 
     //     if (fromState.name && fromState.name != "home" && toState.name == "home.dashboard") {
     //         appToggleData.toggleDashboardView = 'anim-slide-right';
     //         appToggleData.toggleTablesView = 'anim-slide-left';
