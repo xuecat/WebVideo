@@ -6,5 +6,7 @@
     "A004": "Table",
     "A005": "Friendly Reminder: Wrong Url",
     "A006": "Back",
-    "A007": "Video"
+    "A007": "Video",
+    "A008": "List",
+    "A009": "FileTree"
 }
