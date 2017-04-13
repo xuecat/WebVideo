@@ -6,6 +6,8 @@ angular.module('app')
         var myplayer = videojs('v-player');
 
         $scope.toggleView = appToggleData;
+        $scope.videoTitle = $stateParams.param2.substring($stateParams.param2.lastIndexOf('/'));
+        $scope.videoType = $stateParams.param2.substring($stateParams.param2.lastIndexOf('.'));
 
         var videoType = '';
         switch ($stateParams.type) {

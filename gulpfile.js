@@ -111,20 +111,18 @@ gulp.task('startCreate', ['clean'], function() {
     ['copyLib', 'copyImg', 'copyFont']);
 });
 
-gulp.task('browserSync', function() {
-    gulp.start('startCreate');
-
+gulp.task('browserSync', ['startCreate'], function() {
     browserSync.init({
         server: {
-            baseDir: debugPath
+            baseDir: buildPath
         }
     });
 
-    gulp.watch(indexSrc, ['createIndex']).on("change", browserSync.reload);
-    gulp.watch(htmlSrc, ['compressHTML']).on("change", browserSync.reload);
-    gulp.watch(jsSrc, ['compressJS']).on("change", browserSync.reload);
-    gulp.watch(cssSrc, ['compressCSS']).on("change", browserSync.reload);
-    gulp.watch(jsonSrc, ['compressJSON']);
+    watch(indexSrc, () => {gulp.start('createIndex');});
+    watch(htmlSrc, () => {gulp.start('compressHTML');});
+    watch(jsSrc, () => {gulp.start('compressJS');});
+    watch(cssSrc, () => {gulp.start('compressCSS');});
+    watch(jsonSrc, () => {gulp.start('compressJSON');});
 });
 
 gulp.task('default', ['browserSync']);
