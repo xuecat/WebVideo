@@ -11,6 +11,10 @@ angular.module('app')
     });
     $translateProvider.preferredLanguage('en');
 }])
+.factory('viewFactory', function() {
+    var view = {left:'', right:''};
+    return view;
+})
 .constant('appAllConst', {'LEFT_VIEW': 0, 'RIGHT_VIEW': 1,})
 .value('appToggleData', {
     toggleTablesView: 'anim-fade',

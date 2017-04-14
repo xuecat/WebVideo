@@ -14,6 +14,7 @@ angular.module('app')
                     'modules/directives/widget.js',
                     'modules/directives/widget-body.js',
                     'modules/dashboard/dashboard.js',
+                    'modules/tables/tables.js',
                     ],
             }, {
                 name: 'errorView',
@@ -60,8 +61,48 @@ angular.module('app')
         .state('home', {
             //abstract: true,
             url: '/home',
-            templateUrl: 'modules/home/home.html',
-            controller: 'mainController',
+            views: {
+                "": {
+                    templateProvider: ['$http', function($http) {
+                        return $http.get('modules/home/home.html').then(
+                                function (re) {return re.data;}
+                        );
+                    }],
+                    controller: 'mainController',
+                },
+                "body@home": {
+                    templateProvider: ['$stateParams', 'viewFactory', '$http', 
+                    function($stateParams, viewFactory, $http) {
+                        if (viewFactory.right == "tables") {
+                            return $http.get('modules/tables/tables.html').then(
+                                function (re) {return re.data;}
+                            );
+                        } else {
+                            return $http.get('modules/dashboard/dashboard.html').then(
+                                function (re) {return re.data;}
+                            );
+                            
+                        }
+                        return '';
+                    }],
+                },
+                'sidebar@home': {
+                    templateProvider: ['$stateParams', 'viewFactory', '$http',
+                    function($stateParams, viewFactory, $http) {
+                        if (viewFactory.left == "filetree") {
+                            return $http.get('modules/filemanager/sidebartree.html').then(
+                                function (re) {return re.data;}
+                            );
+                        } else {
+                            return $http.get('modules/home/sidebartable.html').then(
+                                function (re) {return re.data;}
+                            );
+                            
+                        }
+                        return '';
+                    }],
+                }
+            },
             resolve: {
                 loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load('mainView');
@@ -77,7 +118,23 @@ angular.module('app')
             views: {
                 'sidebar@home': {
                     templateUrl: 'modules/home/sidebartable.html',
-                }
+                },
+                "body@home": {
+                    templateProvider: ['$stateParams', 'viewFactory', '$http', 
+                    function($stateParams, viewFactory, $http) {
+                        if (viewFactory.right == "tables") {
+                            return $http.get('modules/tables/tables.html').then(
+                                function (re) {return re.data;}
+                            );
+                        } else {
+                            return $http.get('modules/dashboard/dashboard.html').then(
+                                function (re) {return re.data;}
+                            );
+                            
+                        }
+                        return '';
+                    }],
+                },
             },
             data: {
                 linkTitle: 'A008',
@@ -89,19 +146,34 @@ angular.module('app')
             views: {
                 'sidebar@home': {
                     templateUrl: 'modules/filemanager/sidebartree.html',
-                }
+                },
+                "body@home": {
+                    templateProvider: ['$stateParams', 'viewFactory', '$http', 
+                    function($stateParams, viewFactory, $http) {
+                        if (viewFactory.right == "tables") {
+                            return $http.get('modules/tables/tables.html').then(
+                                function (re) {return re.data;}
+                            );
+                        } else {
+                            return $http.get('modules/dashboard/dashboard.html').then(
+                                function (re) {return re.data;}
+                            );
+                            
+                        }
+                        return '';
+                    }],
+                },
             },
             data: {
                 linkTitle: 'A009',
                 linkUrl: '/home/filetree',
             }
         })
-        .state('home.list.dashboard', {
+        .state('home.dashboard', {
             url: '/dashboard',
             views: {
                 'body@home': {
                     templateUrl: 'modules/dashboard/dashboard.html',
-                    controller: 'dashboardController',
                 }
             },
             resolve: {
@@ -114,12 +186,11 @@ angular.module('app')
                 linkUrl: '/home/dashboard',
             }
         })
-        .state('home.list.tables', {
+        .state('home.tables', {
             url: '/tables',
             views: {
                 'body@home': {
                     templateUrl: 'modules/tables/tables.html',
-                    controller: 'tablesController',
                 }
             },
             resolve: {
@@ -132,7 +203,7 @@ angular.module('app')
                 linkUrl: '/home/tables',
             }
         })
-        .state('home.list.video', {
+        .state('home.video', {
             url: '/video/:type/video?param1&param2',//格式，图片，视频
             templateUrl: 'modules/video/video.html',
             controller: 'videoController',

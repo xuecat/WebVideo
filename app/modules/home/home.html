@@ -13,12 +13,12 @@
       </ul>
       <div class="sidebar-footer">
         <div class="col-xs-4">
-          <a ui-sref="home.list">
+          <a ui-sref=".list">
             List
           </a>
         </div>
         <div class="col-xs-4">
-          <a ui-sref="home.filetree">
+          <a ui-sref=".filetree">
             Tree
           </a>
         </div>
@@ -36,10 +36,10 @@
             </div>
             <div class="meta">
               <div class="page">
-                {{linkPage.linkTitle | translate}}
+                {{linkTitle}}
               </div>
               <div class="breadcrumb-links">
-                {{linkPage.linkUrl}}
+                {{linkUrl}}
               </div>
             </div>
           </div>
