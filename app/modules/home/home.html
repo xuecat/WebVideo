@@ -1,3 +1,4 @@
+<!--http://plnkr.co/edit/tgpyZq3JD1hwxtwCwWv8?p=preview-->
 <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
 
     <!-- Sidebar -->
@@ -9,7 +10,12 @@
             <span class="menu-icon glyphicon glyphicon-transfer"></span>
           </a>
         </li>
-        <div class="anim-in-out anim-fade" data-anim-sync="false" data-anim-speed="400" ui-view="sidebar" ></div>
+
+        <uib-tabset>
+          <uib-tab></uib-tab>
+        </uib-tabset>
+        <!--<div class="anim-in-out anim-fade" data-anim-sync="false" data-anim-speed="400" ui-view="sidebar" ></div>-->
+
       </ul>
       <div class="sidebar-footer">
         <div class="col-xs-4">
@@ -47,7 +53,7 @@
         <!-- End Header Bar -->
 
         <!-- Main Content -->
-        <div class="anim-in-out anim-fade" data-anim-sync="false" data-anim-speed="400" ui-view="body" ></div>
+        <div class="anim-in-out anim-fade" data-anim-sync="false" data-anim-speed="400" ui-view ></div>
 
       </div><!-- End Page Content -->
     </div><!-- End Content Wrapper -->

@@ -5,7 +5,7 @@ angular.module('app')
  function($scope, $state, $translate, appToggleData,appAllConst) {
      $scope.linkPage = $state.current.data;
      
-     $state.transitionTo('home.list.dashboard');
+     $state.transitionTo('home.dashboard');
     
      $scope.$on('$stateChangeSuccess', 
      function(event, toState, toParams, fromState, fromParams) {
@@ -14,10 +14,10 @@ angular.module('app')
          }
      });
 
-     $scope.$on('$stateChangeStart', 
-     function(event, toState, toParams, fromState, fromParams) {
-         //event.preventDefault(); 
-     });
+    //  $scope.$on('$stateChangeStart', 
+    //  function(event, toState, toParams, fromState, fromParams) {
+    //      //event.preventDefault(); 
+    //  });
 
     //  $scope.$on('$viewContentLoaded', function(event, a, b, c, d) {
     //  });

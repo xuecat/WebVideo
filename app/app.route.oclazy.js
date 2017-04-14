@@ -11,9 +11,6 @@ angular.module('app')
                     'assets/css/rdash.css',
                     'assets/css/font-awesome.css',
                     'modules/home/home.js',
-                    'modules/directives/widget.js',
-                    'modules/directives/widget-body.js',
-                    'modules/dashboard/dashboard.js',
                     ],
             }, {
                 name: 'errorView',
@@ -72,38 +69,9 @@ angular.module('app')
                 linkUrl: '/home',
             }
         })
-        .state('home.list', {
-            url: '/list',
-            views: {
-                'sidebar@home': {
-                    templateUrl: 'modules/home/sidebartable.html',
-                }
-            },
-            data: {
-                linkTitle: 'A008',
-                linkUrl: '/home/list',
-            }
-        })
-        .state('home.filetree', {
-            url: '/filetree',
-            views: {
-                'sidebar@home': {
-                    templateUrl: 'modules/filemanager/sidebartree.html',
-                }
-            },
-            data: {
-                linkTitle: 'A009',
-                linkUrl: '/home/filetree',
-            }
-        })
-        .state('home.list.dashboard', {
+        .state('home.dashboard', {
             url: '/dashboard',
-            views: {
-                'body@home': {
-                    templateUrl: 'modules/dashboard/dashboard.html',
-                    controller: 'dashboardController',
-                }
-            },
+            templateUrl: 'modules/dashboard/dashboard.html',
             resolve: {
                 loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load('dashboard');
@@ -114,14 +82,9 @@ angular.module('app')
                 linkUrl: '/home/dashboard',
             }
         })
-        .state('home.list.tables', {
+        .state('home.tables', {
             url: '/tables',
-            views: {
-                'body@home': {
-                    templateUrl: 'modules/tables/tables.html',
-                    controller: 'tablesController',
-                }
-            },
+            templateUrl: 'modules/tables/tables.html',
             resolve: {
                 loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load('tables');
@@ -132,7 +95,7 @@ angular.module('app')
                 linkUrl: '/home/tables',
             }
         })
-        .state('home.list.video', {
+        .state('home.video', {
             url: '/video/:type/video?param1&param2',//格式，图片，视频
             templateUrl: 'modules/video/video.html',
             controller: 'videoController',
