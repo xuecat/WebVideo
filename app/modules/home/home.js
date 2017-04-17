@@ -1,10 +1,13 @@
 'user strict';
 
 angular.module('app')
-.controller('mainController', ['$scope', '$state','$translate', 'appToggleData', 'appAllConst',
- function($scope, $state, $translate, appToggleData,appAllConst) {
+.controller('mainController', ['$scope', '$state','$translate', 'appToggleData', 'appAllConst', 'fileNavigator',
+ function($scope, $state, $translate, appToggleData,appAllConst, FileNavigator) {
      $scope.linkPage = $state.current.data;
      
+     $scope.fileNavigator = new FileNavigator;
+     $scope.fileNavigator.createFileTree();
+
      $state.transitionTo('home.dashboard');
     
      $scope.$on('$stateChangeSuccess', 
@@ -13,6 +16,10 @@ angular.module('app')
             $scope.linkPage = toState.data;
          }
      });
+
+     $scope.isInThisPath = function(path) {
+        return path == $scope.fileNavigator.currentPath;
+    };
 
     //  $scope.$on('$stateChangeStart', 
     //  function(event, toState, toParams, fromState, fromParams) {

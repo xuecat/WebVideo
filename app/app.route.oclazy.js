@@ -11,6 +11,8 @@ angular.module('app')
                     'assets/css/rdash.css',
                     'assets/css/font-awesome.css',
                     'assets/css/fadetab.css',
+                    'assets/css/filemanager-animations.css',
+                    'assets/css/filemanager-main.css',
                     'modules/home/home.js',
                     ],
             }, {

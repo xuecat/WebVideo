@@ -12,12 +12,13 @@
         </li>
 
         <uib-tabset class="tab-animation" active="active">
-          <uib-tab index="0" template-url="modules/directives/tab.html">
-            <div ng-include="'modules/home/sidebartable.html'"></div>
-          </uib-tab>
           <uib-tab index="1" template-url="modules/directives/tab.html">
             <div ng-include="'modules/filemanager/sidebartree.html'"></div>
           </uib-tab>
+          <uib-tab index="0" template-url="modules/directives/tab.html">
+            <div ng-include="'modules/home/sidebartable.html'"></div>
+          </uib-tab>
+          
         </uib-tabset>
         <!--<div class="anim-in-out anim-fade" data-anim-sync="false" data-anim-speed="400" ui-view="sidebar" ></div>-->
 
