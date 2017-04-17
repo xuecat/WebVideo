@@ -1,0 +1,24 @@
+/* Styles go here */
+
+.tab-animation > .tab-content {
+	position: relative;
+}
+
+.tab-animation > .tab-content > .tab-pane{
+	transition: 0.2s linear opacity;
+}
+
+.tab-animation > .tab-content > .tab-pane.active-remove {
+	position: absolute;
+	top: 0;
+	width: 100%;
+	display: block;
+}
+
+.tab-animation > .tab-content > .tab-pane.active-remove-active {
+	opacity: 0;
+}
+
+.tab-animation > .tab-content > .tab-pane.active-add {
+	opacity: 0;
+}

@@ -11,20 +11,25 @@
           </a>
         </li>
 
-        <uib-tabset>
-          <uib-tab></uib-tab>
+        <uib-tabset class="tab-animation" active="active">
+          <uib-tab index="0" template-url="modules/directives/tab.html">
+            <div ng-include="'modules/home/sidebartable.html'"></div>
+          </uib-tab>
+          <uib-tab index="1" template-url="modules/directives/tab.html">
+            <div ng-include="'modules/filemanager/sidebartree.html'"></div>
+          </uib-tab>
         </uib-tabset>
         <!--<div class="anim-in-out anim-fade" data-anim-sync="false" data-anim-speed="400" ui-view="sidebar" ></div>-->
 
       </ul>
       <div class="sidebar-footer">
         <div class="col-xs-4">
-          <a ui-sref="home.list">
+          <a style="cursor:pointer;" ng-click="active = 0">
             List
           </a>
         </div>
         <div class="col-xs-4">
-          <a ui-sref="home.filetree">
+          <a style="cursor:pointer;" ng-click="active = 1">
             Tree
           </a>
         </div>

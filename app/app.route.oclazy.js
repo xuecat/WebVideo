@@ -10,6 +10,7 @@ angular.module('app')
                 files: [
                     'assets/css/rdash.css',
                     'assets/css/font-awesome.css',
+                    'assets/css/fadetab.css',
                     'modules/home/home.js',
                     ],
             }, {
