@@ -9,23 +9,7 @@ angular.module('app')
         $scope.videoTitle = $stateParams.param2.substring($stateParams.param2.lastIndexOf('/'));
         $scope.videoType = $stateParams.param2.substring($stateParams.param2.lastIndexOf('.'));
 
-        var videoType = '';
-        switch ($stateParams.type) {
-            case '1': {
-                videoType = 'video/mp4';
-            } break;
-            case '2': {
-                videoType = 'video/webm';
-            } break;
-            case '3': {
-                videoType = 'video/ogg';
-            } break;
-            case '4': {
-                videoType = 'video/avi';
-            } break;
-            default:
-                break;
-        }
+        var videoType = 'video/' + $stateParams.type;
 
         myplayer.poster($stateParams.param1);
         myplayer.src({

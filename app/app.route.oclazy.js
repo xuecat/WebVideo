@@ -30,14 +30,14 @@ angular.module('app')
                     'modules/dashboard/dashboard.js',
                 ],
             }, {
-                name: 'tables',
+                name: 'filemanager',
                 files: [
                     'assets/css/rdash.css',
                     'modules/directives/widget.js',
                     'modules/directives/widget-body.js',
                     'modules/directives/widget-header.js',
                     'modules/directives/widget-footer.js',
-                    'modules/tables/tables.js',
+                    'modules/filemanager/filemanager.js',
                 ],
             }, {
                 name: 'video',
@@ -85,17 +85,17 @@ angular.module('app')
                 linkUrl: '/home/dashboard',
             }
         })
-        .state('home.tables', {
-            url: '/tables',
-            templateUrl: 'modules/tables/tables.html',
+        .state('home.filemanager', {
+            url: '/filemanager',
+            templateUrl: 'modules/filemanager/filemanager.html',
             resolve: {
                 loadModule: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load('tables');
+                    return $ocLazyLoad.load('filemanager');
                 }]
             },
             data: {
                 linkTitle: 'A004',
-                linkUrl: '/home/tables',
+                linkUrl: '/home/filemanager',
             }
         })
         .state('home.video', {

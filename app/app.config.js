@@ -13,7 +13,7 @@ angular.module('app')
 }])
 .service('fileNavigator', function() {
     var FileNavigator = function() {
-        this.currentPath = '';
+        this.currentItem = {};
         this.filelist = [];
     }
 
@@ -25,6 +25,7 @@ angular.module('app')
         this.size = size;
         this.date = date;
         this.type = type;//0folder 1file
+        this.img = '';
         if (node) {
             if (this.hasOwnProperty("node")) {
                 this.node.push(node);
@@ -43,6 +44,9 @@ angular.module('app')
                 this.node.push(node);
             }
         }
+    }
+    item.prototype.createImg = function(path) {
+        this.img = path;
     }
 
     FileNavigator.prototype.createFileTree = function() {
@@ -84,7 +88,7 @@ angular.module('app')
 
     FileNavigator.prototype.folderClick = function(itm) {
         if (itm) {
-            this.currentPath = itm.name;
+            this.currentItem = itm;
 
             this.refresh(itm); 
         }
@@ -92,6 +96,19 @@ angular.module('app')
 
     return FileNavigator;
 })
+.filter('strLimit', ['$filter', function($filter) {
+    return function(input, limit, more) {
+        if (input.length <= limit) {
+            return input;
+        }
+        return $filter('limitTo')(input, limit) + (more || '...');
+    };
+}])
+.filter('fileExtension', ['$filter', function($filter) {
+    return function(input) {
+        return /\./.test(input) && $filter('strLimit')(input.split('.').pop(), 3, '..') || '';
+    };
+}])
 .constant('appAllConst', {'LEFT_VIEW': 0, 'RIGHT_VIEW': 1,})
 .value('appToggleData', {
     toggleTablesView: 'anim-fade',

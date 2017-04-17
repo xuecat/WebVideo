@@ -17,9 +17,26 @@ angular.module('app')
          }
      });
 
+     this.selectTemp = null;
+
      $scope.isInThisPath = function(path) {
-        return path == $scope.fileNavigator.currentPath;
-    };
+        return path == $scope.fileNavigator.currentItem.name;
+     };
+     
+     $scope.isSelected = function(itm) {
+         if (itm) {
+             return selectTemp == itm;
+         }
+         return false;
+     }
+
+     $scope.selectOrUnselect = function(itm) {
+         if (itm) {
+             selectTemp = itm;
+         } else {
+             selectTemp = null;
+         }
+     }
 
     //  $scope.$on('$stateChangeStart', 
     //  function(event, toState, toParams, fromState, fromParams) {
