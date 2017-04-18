@@ -8,7 +8,7 @@ angular.module('app')
      $scope.fileNavigator = new FileNavigator;
      $scope.fileNavigator.createFileTree();
 
-     $state.transitionTo('home.dashboard');
+     $state.transitionTo('home.filemanager');
     
      $scope.$on('$stateChangeSuccess', 
      function(event, toState, toParams, fromState, fromParams) {
@@ -17,7 +17,7 @@ angular.module('app')
          }
      });
 
-     this.selectTemp = null;
+     $scope.selectTemp = null;
 
      $scope.isInThisPath = function(path) {
         return path == $scope.fileNavigator.currentItem.name;
@@ -25,16 +25,18 @@ angular.module('app')
      
      $scope.isSelected = function(itm) {
          if (itm) {
-             return selectTemp == itm;
+             return $scope.selectTemp == itm;
          }
          return false;
      }
 
-     $scope.selectOrUnselect = function(itm) {
+     $scope.selectOrUnselect = function(itm, $event) {
          if (itm) {
-             selectTemp = itm;
+             $scope.selectTemp = itm;
+             if ($event)
+                $event.stopPropagation();
          } else {
-             selectTemp = null;
+             $scope.selectTemp = null;
          }
      }
 

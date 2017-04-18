@@ -10,10 +10,10 @@
           ng-click="selectOrUnselect(null)" 
           ng-right-click="selectOrUnselect(null)">
         <div class="col-120" 
-              ng-repeat="item in fileNavigator.currentItem" >
+              ng-repeat="item in fileNavigator.currentItem.node" >
             <a href="" 
                 class="thumbnail text-center" 
-                ng-click="selectOrUnselect(item)" 
+                ng-click="selectOrUnselect(item, $event)" 
                 ng-dblclick="smartClick(item)" 
                 ng-right-click="selectOrUnselect(item)" 
                 title="{{ item.name.split('/').pop() | strLimit : 8 }}" 
