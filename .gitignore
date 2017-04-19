@@ -2,3 +2,4 @@ node_modules/
 dist/
 app/data
 app/npm-debug.log
+WebServer/WebServer/obj
