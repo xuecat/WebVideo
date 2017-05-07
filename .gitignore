@@ -3,3 +3,4 @@ dist/
 app/data
 app/npm-debug.log
 WebServer/WebServer/obj
+WebServer/WebServer/packages
