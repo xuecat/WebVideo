@@ -31,7 +31,7 @@ var indexSrc = 'app/index.html';
 var faviconSrc = 'app/favicon.ico';
 
 var debugPath = 'app/';
-var buildPath = 'dist/';
+var buildPath = 'dist/Web/';
 
 gulp.task('moveFavicon', function() {
     return gulp.src(faviconSrc)
