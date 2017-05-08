@@ -19,3 +19,7 @@ D:\WebVideo\WebServer\WebServer\WebConsoleServer\bin\Debug\System.Web.Http.Owin.
 D:\WebVideo\WebServer\WebServer\WebConsoleServer\obj\Debug\WebConsoleServer.csprojResolveAssemblyReference.cache
 D:\WebVideo\WebServer\WebServer\WebConsoleServer\obj\Debug\WebConsoleServer.exe
 D:\WebVideo\WebServer\WebServer\WebConsoleServer\obj\Debug\WebConsoleServer.pdb
+D:\WebVideo\WebServer\WebServer\WebConsoleServer\bin\Debug\Microsoft.Owin.FileSystems.dll
+D:\WebVideo\WebServer\WebServer\WebConsoleServer\bin\Debug\Microsoft.Owin.StaticFiles.dll
+D:\WebVideo\WebServer\WebServer\WebConsoleServer\bin\Debug\Microsoft.Owin.FileSystems.xml
+D:\WebVideo\WebServer\WebServer\WebConsoleServer\bin\Debug\Microsoft.Owin.StaticFiles.xml
