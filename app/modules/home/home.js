@@ -9,6 +9,11 @@ angular.module('app')
      $scope.fileNavigator.createFileTree();
 
      $state.transitionTo('home.filemanager');
+    //  $state.go('home.video', {
+    //             type: 'mp4', 
+    //             param1: '',
+    //             param2: './data/test.mp4'
+    //         });
     
      $scope.$on('$stateChangeSuccess', 
      function(event, toState, toParams, fromState, fromParams) {

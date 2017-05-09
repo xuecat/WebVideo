@@ -23,3 +23,6 @@ D:\WebVideo\WebServer\WebServer\WebConsoleServer\bin\Debug\Microsoft.Owin.FileSy
 D:\WebVideo\WebServer\WebServer\WebConsoleServer\bin\Debug\Microsoft.Owin.StaticFiles.dll
 D:\WebVideo\WebServer\WebServer\WebConsoleServer\bin\Debug\Microsoft.Owin.FileSystems.xml
 D:\WebVideo\WebServer\WebServer\WebConsoleServer\bin\Debug\Microsoft.Owin.StaticFiles.xml
+D:\WebVideo\bin\WebConsoleServer.exe.config
+D:\WebVideo\bin\WebConsoleServer.exe
+D:\WebVideo\bin\WebConsoleServer.pdb

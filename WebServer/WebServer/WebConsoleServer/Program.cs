@@ -11,6 +11,7 @@ namespace WebConsoleServer
 {
     class Program
     {
+        //test video: http://localhost:9000/#!/home/video/mp4/video?param2=..~2Fdata~2Ftest.mp4
         static void Main(string[] args)
         {
             string baseAddress = "http://localhost:9000/";
