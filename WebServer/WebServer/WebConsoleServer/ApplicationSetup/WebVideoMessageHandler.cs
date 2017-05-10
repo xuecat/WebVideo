@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WebConsoleServer.ApplicationSetup
@@ -28,8 +29,7 @@ namespace WebConsoleServer.ApplicationSetup
             }
 
             var re = request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest,
-                ParseMessage.GetCodeMessage("I000"));
-            //config.MessageHandlers.Add(new MessageHandler2());
+                "Bad Request");
             var tsc = new TaskCompletionSource<HttpResponseMessage>();
             tsc.SetResult(re);
             return tsc.Task;

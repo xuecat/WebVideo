@@ -12,6 +12,7 @@ using Microsoft.Owin.FileSystems;
 using Microsoft.Owin.StaticFiles;
 using System.IO;
 using System.Diagnostics;
+using WebConsoleServer.ApplicationSetup;
 
 namespace WebConsoleServer
 {
@@ -38,6 +39,8 @@ namespace WebConsoleServer
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.MessageHandlers.Add(new WebVideoMessageHandler());
 
             //////
             var staticFIles = new StaticFileOptions();

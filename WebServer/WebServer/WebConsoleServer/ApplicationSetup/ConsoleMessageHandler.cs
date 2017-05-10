@@ -9,12 +9,12 @@ namespace WebConsoleServer.ApplicationSetup
 {
     class ConsoleMessageHandler : DelegatingHandler
     {
-        private int _count = 0;
+        private const string _header = "WebVideo-Header";
+
         protected override Task<HttpResponseMessage>
             SendAsync(HttpRequestMessage request, System.Threading.CancellationToken cancellationToken)
         {
-            _count++;
-            request.Headers.Add("WebVideo-Header", _count.ToString());
+            request.Headers.Add(_header, "Client");
             return base.SendAsync(request, cancellationToken);
         }
 
@@ -22,8 +22,5 @@ namespace WebConsoleServer.ApplicationSetup
         {
             base.Dispose(disposing);
         }
-        //HttpClient client = HttpClientFactory.Create(
-        //new MessageHandler()
-        //        );
     }
 }

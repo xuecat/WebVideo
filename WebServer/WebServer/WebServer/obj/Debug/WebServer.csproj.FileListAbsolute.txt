@@ -28,6 +28,6 @@ D:\WebVideo\WebServer\WebServer\WebServer\bin\Newtonsoft.Json.xml
 D:\WebVideo\WebServer\WebServer\WebServer\bin\System.Net.Http.Formatting.xml
 D:\WebVideo\WebServer\WebServer\WebServer\bin\System.Web.Http.xml
 D:\WebVideo\WebServer\WebServer\WebServer\bin\System.Web.Http.Owin.xml
-D:\WebVideo\WebServer\WebServer\WebServer\obj\Debug\WebServer.csprojResolveAssemblyReference.cache
 D:\WebVideo\WebServer\WebServer\WebServer\obj\Debug\WebServer.dll
 D:\WebVideo\WebServer\WebServer\WebServer\obj\Debug\WebServer.pdb
+D:\WebVideo\WebServer\WebServer\WebServer\obj\Debug\WebServer.csprojResolveAssemblyReference.cache

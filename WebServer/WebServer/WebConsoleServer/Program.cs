@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
+using WebConsoleServer.ApplicationSetup;
 
 namespace WebConsoleServer
 {
@@ -18,9 +19,9 @@ namespace WebConsoleServer
 
             using (WebApp.Start<StartUp>(url: baseAddress))
             {
-                HttpClient client = new HttpClient();
+                HttpClient client = HttpClientFactory.Create(new ConsoleMessageHandler());
 
-                var response = client.GetAsync(baseAddress + "api/user/GetUser/").Result;
+                var response = client.GetAsync(baseAddress + "api/video/GetRootVideo/").Result;
 
                 Console.WriteLine("Running test api/user/GetUser/ :");
                 Console.WriteLine(response.Content.ReadAsStringAsync().Result);

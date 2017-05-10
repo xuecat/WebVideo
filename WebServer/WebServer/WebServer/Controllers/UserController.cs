@@ -19,7 +19,7 @@ namespace WebServer.Controllers
         [Route("GetUser"), HttpGet]
         public string GetUser()
         {
-            return "test";
+            return "test ok!";
         }
     }
 }

@@ -9,5 +9,6 @@
     "A007": "Video",
     "A008": "List",
     "A009": "FileTree",
-    "S001": "Server: GetAllvideo error, count less"
+    "S001": "Server: GetAllvideo error, count less",
+    "S002": "Client: Wrong Requery"
 }

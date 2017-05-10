@@ -12,12 +12,18 @@ namespace WebServer
     static public class ErrorMessage
     {
         private static JObject _mObj = null;
+        private static AppSettingsReader _read = null;
+        private static string _rootDataPath = string.Empty;
+
         public static bool Init()
         {
+            if (_mObj != null && _read != null)
+                return true;
+
             try
             {
-                System.Configuration.AppSettingsReader read = new AppSettingsReader();
-                string webpath = Convert.ToString(read.GetValue("Web.Translate", typeof(string)));
+                _read = new AppSettingsReader();
+                string webpath = Convert.ToString(_read.GetValue("Web.Translate", typeof(string)));
 
                 var assembly = System.Reflection.Assembly.GetExecutingAssembly().Location;
                 string rootPath = assembly.Substring(0, assembly.LastIndexOf("\\")+1)
@@ -35,12 +41,42 @@ namespace WebServer
                     }
                 }
 
+                return true;
             }
             catch (IOException e)
             {
                 throw e;
             }
-            return false;
+            
+        }
+
+        public static string GetWebRootPath()
+        {
+            if (_read == null)
+            { Init(); }
+
+            string staticpath = Convert.ToString(_read.GetValue("Static.Folder", typeof(string)));
+            return "/" + staticpath.Substring(staticpath.LastIndexOf("//") + 2);
+        }
+
+        public static string GetDataPath(string extra = "")
+        {
+            if (_read == null)
+            { Init(); }
+
+            if (_rootDataPath == string.Empty)
+            {
+                var assembly = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                _rootDataPath = Path.Combine(assembly.Substring(0, assembly.LastIndexOf("\\")),
+                    Convert.ToString(_read.GetValue("Static.Folder", typeof(string))));
+            }
+
+            if (extra == "")
+            {
+                return _rootDataPath;
+            }
+
+            return _rootDataPath + extra;
         }
 
         public static string GetCodeMessage(int code)
