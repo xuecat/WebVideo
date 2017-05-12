@@ -5,3 +5,8 @@ app/npm-debug.log
 WebServer/WebServer/obj
 ./WebServer/WebServer/packages
 *.cache
+bin/
+WebServer/WebServer/WebConsoleServer/bin/
+WebServer/WebServer/WebConsoleServer/obj/
+WebServer/WebServer/WebServer/bin/
+WebServer/WebServer/WebServer/obj/
