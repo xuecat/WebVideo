@@ -21,7 +21,12 @@ namespace WebConsoleServer
             {
                 HttpClient client = HttpClientFactory.Create(new ConsoleMessageHandler());
 
-                var response = client.GetAsync(baseAddress + "api/video/GetRootVideo/").Result;
+                var response = client.GetAsync(baseAddress + "api/user/GetUser/").Result;
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    System.Diagnostics.Process.Start(baseAddress);
+                }
 
                 Console.WriteLine("Running test api/user/GetUser/ :");
                 Console.WriteLine(response.Content.ReadAsStringAsync().Result);

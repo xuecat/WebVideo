@@ -14,25 +14,33 @@ namespace WebConsoleServer.ApplicationSetup
         protected override Task<HttpResponseMessage> SendAsync(
         HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            if (request.Headers.Contains(_header))
+            if (request.RequestUri.AbsolutePath.IndexOf("api") != -1)
             {
-                var method = request.Headers.GetValues(_header)
-                    .FirstOrDefault();
+                if (request.Headers.Contains(_header))
+                {
+                    var method = request.Headers.GetValues(_header)
+                        .FirstOrDefault();
 
-                return base.SendAsync(request, cancellationToken)
-                    .ContinueWith((task) =>
-                    {
-                        HttpResponseMessage response = task.Result;
-                        response.Headers.Add(_header, "Server");
-                        return response;
-                    });
+                    return base.SendAsync(request, cancellationToken)
+                        .ContinueWith((task) =>
+                        {
+                            HttpResponseMessage response = task.Result;
+                            response.Headers.Add(_header, "Server");
+                            return response;
+                        });
+                }
+                else
+                {
+                    var re = request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest,
+                        "Bad Request");
+                    var tsc = new TaskCompletionSource<HttpResponseMessage>();
+                    tsc.SetResult(re);
+                    return tsc.Task;
+                }
             }
 
-            var re = request.CreateErrorResponse(System.Net.HttpStatusCode.BadRequest,
-                "Bad Request");
-            var tsc = new TaskCompletionSource<HttpResponseMessage>();
-            tsc.SetResult(re);
-            return tsc.Task;
+            return base.SendAsync(request, cancellationToken);
+            
         }
     }
 }

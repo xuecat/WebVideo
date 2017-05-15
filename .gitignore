@@ -3,7 +3,7 @@ dist/
 app/data
 app/npm-debug.log
 WebServer/WebServer/obj
-./WebServer/WebServer/packages
+WebServer/WebServer/packages
 *.cache
 bin/
 WebServer/WebServer/WebConsoleServer/bin/

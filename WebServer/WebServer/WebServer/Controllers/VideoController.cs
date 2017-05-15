@@ -19,18 +19,23 @@ namespace WebServer.Controllers
         }
 
         [Route("GetRootVideo"), HttpGet]
-        public IEnumerable<Video> GetRootVideo()
+        public IEnumerable<Video> GetRootVideo([FromUri]string pname)
         {
             List<Video> lstVideo = new List<Video>();
 
-            var dir = new DirectoryInfo(ErrorMessage.GetDataPath());
+            if (pname == null || pname == "0" || pname == ErrorMessage.GetWebRootPath())
+            {
+                pname = string.Empty;
+            }
+
+            var dir = new DirectoryInfo(ErrorMessage.GetDataPath(pname));
             if (dir.Exists)
             {
                 foreach (var item in dir.GetFiles("*.mp4", SearchOption.TopDirectoryOnly))
                 {
                     lstVideo.Add(new Video()
                     {
-                        name = item.Name,
+                        name = pname + "//" + item.Name,
                         size = item.Length,
                         date = item.CreationTime.ToShortDateString(),
                         type = 1,
@@ -42,7 +47,7 @@ namespace WebServer.Controllers
                 {
                     lstVideo.Add(new Video()
                     {
-                        name = item.Name,
+                        name = pname + "//" + item.Name,
                         size = 0,
                         date = item.CreationTime.ToShortDateString(),
                         type = 0,
@@ -50,8 +55,7 @@ namespace WebServer.Controllers
                     });
                 }
             }
-
-            if (lstVideo.Count < 1)
+            else
             {
                 throw new HttpResponseException(
                     Request.CreateErrorResponse(
@@ -62,12 +66,6 @@ namespace WebServer.Controllers
             return lstVideo;
         }
 
-        [Route("SelectVideo"), HttpPost]
-        public IEnumerable<Video> SelectVideo(string parentpath)
-        {
-            List<Video> lstVideo = new List<Video>();
-
-            return lstVideo;
-        }
+        
     }
 }
