@@ -1,33 +1,21 @@
 <div class="{{ toggleView.toggleTablesView }}" ng-controller="filemanagerController">
-  <div class="main col-sm-8 col-md-9">
-      <div ng-include="'folder-manager-body'" class="main-navigation clearfix"></div>
-  </div>
+    <div class="main col-sm-8 col-md-9">
+        <div ng-include="'folder-manager-body'" class="main-navigation clearfix"></div>
+    </div>
 </div>
 
 <script type="text/ng-template" id="folder-manager-body">
-  <div class="iconset noselect">
-    <div class="item-list clearfix" 
-          ng-click="selectOrUnselect(null)" 
-          ng-right-click="selectOrUnselect(null)">
-        <div class="col-120" 
-              ng-repeat="item in fileNavigator.currentItem.node" >
-            <a href="" 
-                class="thumbnail text-center" 
-                ng-click="selectOrUnselect(item, $event)" 
-                ng-dblclick="smartClick(item)" 
-                ng-right-click="selectOrUnselect(item)" 
-                title="{{ item.name.split('/').pop() | strLimit : 8 }}" 
-                ng-class="{selected: isSelected(item)}">
-                <div class="item-icon">
-                    <i class="glyphicon glyphicon-folder-open" 
-                        ng-show="item.type === 0"></i>
-                    <i class="glyphicon glyphicon-file item-extension" 
-                        data-ext="{{ item.model.name | fileExtension }}" 
-                        ng-show="item.type !== 0"></i>
-                </div>
-                {{item.name.split('/').pop() | strLimit : 11 }}
-            </a>
+    <div class="iconset noselect">
+        <div class="item-list clearfix" ng-click="selectOrUnselect(null)" ng-right-click="selectOrUnselect(null)">
+            <div class="col-120" ng-repeat="item in fileNavigator.currentItem.node">
+                <a href="" class="thumbnail text-center" ng-click="selectOrUnselect(item, $event)" ng-dblclick="smartClick(item)" ng-right-click="selectOrUnselect(item)" title="{{ item.name.split('/').pop() }}" ng-class="{selected: isSelected(item)}">
+                    <div class="item-icon">
+                        <i class="glyphicon glyphicon-folder-open" ng-show="item.type === 0"></i>
+                        <i class="glyphicon glyphicon-file item-extension" data-ext="{{ item.model.name | fileExtension }}" ng-show="item.type !== 0"></i>
+                    </div>
+                    {{item.name.split('/').pop() | strLimit : 11 }}
+                </a>
+            </div>
         </div>
     </div>
-  </div>
 </script>
