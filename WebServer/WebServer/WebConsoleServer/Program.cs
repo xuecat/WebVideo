@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,12 @@ namespace WebConsoleServer
         {
             string baseAddress = "http://localhost:9000/";
 
-            using (WebApp.Start<StartUp>(url: baseAddress))
+            StartOptions options = new StartOptions("http://*:9000")
+            {
+                ServerFactory = "Microsoft.Owin.Host.HttpListener"
+            };
+
+            using (WebApp.Start<StartUp>(options))
             {
                 HttpClient client = HttpClientFactory.Create(new ConsoleMessageHandler());
 
@@ -25,7 +31,7 @@ namespace WebConsoleServer
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    System.Diagnostics.Process.Start(baseAddress);
+                    //System.Diagnostics.Process.Start(baseAddress);
                 }
 
                 Console.WriteLine("Running test api/user/GetUser/ :");
