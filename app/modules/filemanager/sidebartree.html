@@ -7,12 +7,10 @@
     <a href="" ng-click="fileNavigator.folderClick(item)" class="animated fast fadeInDown">
 
         <span class="point">
-            <i class="glyphicon glyphicon-chevron-down" ng-show="isInThisPath(item.name)"></i>
-            <i class="glyphicon glyphicon-chevron-right" ng-show="!isInThisPath(item.name)"></i>
+            <i class="glyphicon" ng-class="{true:'glyphicon-chevron-down',false:'glyphicon-chevron-right'}[isInThisPath(item.name)]"></i>
         </span>
 
-        <i class="glyphicon glyphicon-folder-open mr2" ng-show="isInThisPath(item.name)"></i>
-        <i class="glyphicon glyphicon-folder-close mr2" ng-show="!isInThisPath(item.name)"></i> {{ item.name.split('/').pop() | strLimit : 8 }}
+        <i class="glyphicon mr2" ng-class="{true:'glyphicon-folder-open',false:'glyphicon-folder-close'}[isInThisPath(item.name)]"></i> {{ item.name.split('/').pop() | strLimit : 8 }}
     </a>
     <ul class="nav-sidebar">
         <li ng-repeat="item in item.node | filter: fileNavigator.isFolder" ng-include="'folder-branch-item'" ng-class="{'active': item.name == fileNavigator.currentItem.name}">
