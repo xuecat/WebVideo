@@ -70,21 +70,28 @@ angular.module('app')
 
         FileNavigator.prototype.createFileTree = function() {
             var self = this;
-            webServer.GetRootWeb(function(result) {
-                if (result.status == 200) {
-                    self.rootStaticUrl = result.data;
+            // webServer.GetRootWeb(function(result) {
+            //     if (result.status == 200) {
+            //         self.rootStaticUrl = result.data;
 
-                    var rootitem = new item(result.data, 0, 0, 0);
-                    self.filelist.push(rootitem);
+            //         var rootitem = new item(result.data, 0, 0, 0);
+            //         self.filelist.push(rootitem);
 
-                    webServer.GetItemVideo("0", function(result) {
-                        if (result.status == 200) {
-                            createNode(rootitem, result.data);
-                            self.currentItem = rootitem;
-                        }
-                    });
-                }
-            });
+            //         webServer.GetItemVideo("0", function(result) {
+            //             if (result.status == 200) {
+            //                 createNode(rootitem, result.data);
+            //                 self.currentItem = rootitem;
+            //             }
+            //         });
+            //     }
+            // });
+
+            self.rootStaticUrl = "/data";
+            self.filelist.push(item("data", 1, 1, 0));
+            createNode(self.filelist[0], [item("tt.txt", 1, 1, 1),
+                item("dd", 1, 1, 0)
+            ]);
+            self.currentItem = self.filelist[0];
         }
 
         // [
@@ -98,11 +105,12 @@ angular.module('app')
         FileNavigator.prototype.refresh = function(itm) {
             if (itm) {
                 if (itm.type == 0) {
-                    webServer.GetItemVideo(itm.name, function(result) {
-                        if (result.status == 200) {
-                            createNode(itm, result.data);
-                        }
-                    });
+                    // webServer.GetItemVideo(itm.name, function(result) {
+                    //     if (result.status == 200) {
+                    //         createNode(itm, result.data);
+                    //     }
+                    // });
+                    createNode(itm, [item("zz", 1, 1, 0), item("pp.txt", 1, 1, 1)]);
                 }
             }
         }
