@@ -110,7 +110,7 @@ angular.module('app')
                     //         createNode(itm, result.data);
                     //     }
                     // });
-                    createNode(itm, [item("zz", 1, 1, 0), item("pp.txt", 1, 1, 1)]);
+                    createNode(itm, [item(itm.name + "//" + "zz", 1, 1, 0), item("pp.txt", 1, 1, 1)]);
                 }
             }
         }
