@@ -6,5 +6,6 @@ angular.module('app', [
     'oc.lazyLoad',
     'ngAnimate',
     'anim-in-out',
+    'ngTouch',
     'pascalprecht.translate',
 ]);

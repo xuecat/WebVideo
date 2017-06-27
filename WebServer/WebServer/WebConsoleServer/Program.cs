@@ -31,7 +31,7 @@ namespace WebConsoleServer
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    //System.Diagnostics.Process.Start(baseAddress);
+                    System.Diagnostics.Process.Start(baseAddress);
                 }
 
                 Console.WriteLine("Running test api/user/GetUser/ :");

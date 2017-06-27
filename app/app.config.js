@@ -70,47 +70,42 @@ angular.module('app')
 
         FileNavigator.prototype.createFileTree = function() {
             var self = this;
-            // webServer.GetRootWeb(function(result) {
-            //     if (result.status == 200) {
-            //         self.rootStaticUrl = result.data;
+            webServer.GetRootWeb(function(result) {
+                if (result.status == 200) {
+                    self.rootStaticUrl = result.data;
 
-            //         var rootitem = new item(result.data, 0, 0, 0);
-            //         self.filelist.push(rootitem);
+                    var rootitem = new item(result.data, 0, 0, 0);
+                    self.filelist.push(rootitem);
 
-            //         webServer.GetItemVideo("0", function(result) {
-            //             if (result.status == 200) {
-            //                 createNode(rootitem, result.data);
-            //                 self.currentItem = rootitem;
-            //             }
-            //         });
-            //     }
-            // });
+                    webServer.GetItemVideo("0", function(result) {
+                        if (result.status == 200) {
+                            createNode(rootitem, result.data);
+                            self.currentItem = rootitem;
+                        }
+                    });
+                }
+            });
 
-            self.rootStaticUrl = "/data";
-            self.filelist.push(item("data", 1, 1, 0));
-            createNode(self.filelist[0], [item("tt.txt", 1, 1, 1),
-                item("dd", 1, 1, 0)
-            ]);
-            self.currentItem = self.filelist[0];
+            //test data
+            // self.rootStaticUrl = "/data";
+            // self.filelist.push(item("data", 1, 1, 0));
+            // createNode(self.filelist[0], [item("tt.txt", 1, 1, 1),
+            //     item("dd", 1, 1, 0)
+            // ]);
+            // self.currentItem = self.filelist[0];
         }
-
-        // [
-        //                 item('/path/data/tt.txt', 12, '2011/11/11', 1),
-        //                 item('/path/data/hehe', 20, '2012/13/01', 0, [
-        //                     item('/path/data/hehe/ht.txt', 12, '2011/01/01', 1),
-        //                     item('/path/data/hehe/rt.txt', 12, '2011/01/01', 1),
-        //                 ]),
-        //             ]
 
         FileNavigator.prototype.refresh = function(itm) {
             if (itm) {
                 if (itm.type == 0) {
-                    // webServer.GetItemVideo(itm.name, function(result) {
-                    //     if (result.status == 200) {
-                    //         createNode(itm, result.data);
-                    //     }
-                    // });
-                    createNode(itm, [item(itm.name + "//" + "zz", 1, 1, 0), item("pp.txt", 1, 1, 1)]);
+                    webServer.GetItemVideo(itm.name, function(result) {
+                        if (result.status == 200) {
+                            createNode(itm, result.data);
+                        }
+                    });
+
+                    //test data
+                    //createNode(itm, [item(itm.name + "//" + "zz", 1, 1, 0), item("pp.txt", 1, 1, 1)]);
                 }
             }
         }
