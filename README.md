@@ -1,5 +1,5 @@
 ### Purpose
-> Look through the phone to watch the video on your computer
+> Watch the video on computer by phone
 
 ### Web
 angular + gulp
